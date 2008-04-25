@@ -369,3 +369,26 @@ use constant TRUE   => sub { 1 };
     }
 }
 
+# more store tests
+{   my $foo;
+    my @bar;
+    my %baz;
+    my $tmpl = {
+                foo => { store => \$foo },
+                bar => { store => \@bar },
+                baz => { store => \%baz },
+               };
+    
+    my $rv = check( $tmpl, { foo => 42,
+                             bar => [ 'a', 'pony' ],
+                             baz => { another => 'animal' },
+                           } );
+    ok( $rv );
+    is( $foo, 42 );
+    is( $rv->{foo}, 42 );
+    is_deeply( \@bar, [ 'a', 'pony' ] );
+    is_deeply( $rv->{bar}, [ 'a', 'pony' ] );
+    is_deeply( \%baz, { another => 'animal' });
+    is_deeply( $rv->{baz}, { another => 'animal' } );
+}
+
