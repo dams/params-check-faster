@@ -18,7 +18,7 @@ WriteMakefile1(
                         'Test::More'                => 0, 
                         'Locale::Maketext::Simple'  => 0,    
                     },
-    INSTALLDIRS     => ( $] >= 5.009005 && $] <= 5.012 ? 'perl' : 'site' ),
+    INSTALLDIRS     => ( $] >= 5.009005 && $] < 5.012 ? 'perl' : 'site' ),
     AUTHOR          => 'Damien "dams" Krotkine <dams[at]cpan.org>',
     ABSTRACT        => 'Faster implementation of Params::Check, a templated based param validation'
 );
