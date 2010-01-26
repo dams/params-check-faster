@@ -1,5 +1,6 @@
 package Params::Check::Faster;
 
+use 5.006; #warnings.pm 
 use strict;
 
 use Carp                        qw[carp croak];
